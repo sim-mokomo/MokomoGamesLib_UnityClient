@@ -1,0 +1,6 @@
+[submodule "MokomoGamesLibExternalResources"]
+	path = MokomoGamesLibExternalResources
+	url = git@github.com:sim-mokomo/MokomoGamesLibExternalResources.git
+[submodule "ExternalResources"]
+	path = ExternalResources
+	url = git@github.com:sim-mokomo/MokomoGamesLibExternalResources.git
