@@ -1,31 +1,31 @@
 ﻿using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Audio.Speaker
+namespace MokomoGamesLib.Runtime.Audio.Speakers
 {
     [RequireComponent(typeof(AudioSource))]
     public class SpeakerPresenter : MonoBehaviour
     {
         private AudioSource _audioSource;
-        private SpeakerEntity _speakerEntity;
 
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
         }
 
-        public void Initialize(SpeakerEntity entity)
+        public void Initialize(Speaker speaker)
         {
-            _speakerEntity = entity;
+            name = $"[Speaker]_{speaker.SoundName}";
+            SetVolume(speaker.Volume);
         }
 
-        private void SetVolume(float volume)
+        public void SetVolume(float volume)
         {
-            _speakerEntity.Volume = volume;
+            _audioSource.volume = volume;
         }
 
-        public void PlayOneShot()
+        public void PlayOneShot(AudioClip clip)
         {
-            _audioSource.PlayOneShot(_speakerEntity.AudioClip);
+            _audioSource.PlayOneShot(clip);
         }
 
         public void Stop()

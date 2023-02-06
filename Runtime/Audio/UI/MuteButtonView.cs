@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MokomoGamesLib.Runtime.Audio
+namespace MokomoGamesLib.Runtime.Audio.UI
 {
-    public class MuteAudioButtonView : MonoBehaviour
+    public class MuteButtonView : MonoBehaviour
     {
         [SerializeField] private Button muteButton;
         [SerializeField] private Image soundIcon;
@@ -13,12 +13,12 @@ namespace MokomoGamesLib.Runtime.Audio
 
         private void Awake()
         {
-            muteButton.onClick.AddListener(() => { OnToggleMute?.Invoke(); });
+            muteButton.onClick.AddListener(() => { OnClickedMuteButton?.Invoke(); });
         }
 
-        public event Action OnToggleMute;
+        public event Action OnClickedMuteButton;
 
-        public void UpdateRender(bool isMute)
+        public void UpdateIcon(bool isMute)
         {
             soundIcon.sprite = isMute ? muteSprite : unMuteSprite;
         }
