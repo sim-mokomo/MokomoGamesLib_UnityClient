@@ -22,7 +22,7 @@ namespace MokomoGamesLib.Runtime.Ads.AppOpens
 
         private void AppStateChanged(AppState appState)
         {
-            Debug.Log("App State is " + appState);
+            Debug.Log($"App State が次のStateに変化しました: {appState}");
             if (appState == AppState.Foreground) _appOpen.ShowAdIfAvailable();
         }
     }

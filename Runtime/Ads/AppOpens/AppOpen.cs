@@ -7,28 +7,26 @@ namespace MokomoGamesLib.Runtime.Ads.AppOpens
     public class AppOpen
     {
         private AppOpenAd _ad;
+        private AdsConfigList _adsConfigList;
         private bool _isShowingAd;
         public bool IsAdAvailable => _ad != null;
-        private AdsConfigList _adsConfigList;
 
         public void LoadAd(AdsConfigList adsConfigList)
         {
-            // Load an app open ad for portrait orientation
-            AppOpenAd.LoadAd(
+            _adsConfigList = adsConfigList;
+            AppOpenAd.Load(
                 adsConfigList.GetCurrentPlatformUnitId(AdsType.AppOpen),
-                ScreenOrientation.Portrait,
+                ScreenOrientation.AutoRotation,
                 AdsManager.CreateAdMobRequest().Build(),
-                (appOpenAd, error) =>
+                (ad, error) =>
                 {
                     if (error != null)
                     {
-                        // Handle the error.
-                        Debug.LogFormat("Failed to load the ad. (reason: {0})", error.LoadAdError.GetMessage());
+                        Debug.Log($"Failed to load the ad. (reason: {error.GetMessage()})");
                         return;
                     }
-
-                    // App open ad is loaded.
-                    _ad = appOpenAd;
+                    
+                    _ad = ad;
                 }
             );
         }
@@ -37,32 +35,24 @@ namespace MokomoGamesLib.Runtime.Ads.AppOpens
         {
             if (!IsAdAvailable || _isShowingAd) return;
 
-            _ad.OnAdDidDismissFullScreenContent += (sender, args) =>
+            _ad.OnAdFullScreenContentClosed += () =>
             {
-                Debug.Log("Closed app open ad");
-                // Set the ad to null to indicate that AppOpenAdManager no longer has another ad to show.
+                Debug.Log("OpenAdを閉じる");
                 _ad = null;
                 _isShowingAd = false;
                 LoadAd(_adsConfigList);
             };
-            _ad.OnAdFailedToPresentFullScreenContent += (sender, args) =>
+            _ad.OnAdFullScreenContentFailed += error =>
             {
-                Debug.LogFormat("Failed to present the ad (reason: {0})", args.AdError.GetMessage());
-                // Set the ad to null to indicate that AppOpenAdManager no longer has another ad to show.
+                Debug.Log($"OpenAdの表示に失敗 (reason: {error.GetMessage()})");
                 _ad = null;
+                _isShowingAd = false;
                 LoadAd(_adsConfigList);
             };
-            _ad.OnAdDidPresentFullScreenContent += (sender, args) =>
+            _ad.OnAdFullScreenContentOpened += () =>
             {
-                Debug.Log("Displayed app open ad");
+                Debug.Log("OpenAdの表示に成功");
                 _isShowingAd = true;
-            };
-            _ad.OnAdDidRecordImpression += (sender, args) => { Debug.Log("Recorded ad impression"); };
-            _ad.OnPaidEvent += (sender, args) =>
-            {
-                Debug.LogFormat("Received paid event. (currency: {0}, value: {1}",
-                    args.AdValue.CurrencyCode,
-                    args.AdValue.Value);
             };
             _ad.Show();
         }
