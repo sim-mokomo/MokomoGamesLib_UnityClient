@@ -16,8 +16,8 @@ namespace MokomoGamesLib.Runtime.UI
             button.onClick.AddListener(() =>
             {
                 Service.PlayOneShot(
-                    FindObjectOfType<AudioManager>(),
                     soundName,
+                    FindObjectOfType<AudioManager>(),
                     FindObjectOfType<GameConfigManager>()
                 );
             });
