@@ -1,28 +1,29 @@
 using GoogleMobileAds.Api;
-using UnityEngine;
+using MokomoGamesLib.Runtime.Ads.Configs;
 
-namespace MokomoGamesLib.Runtime.Ads.Banner
+namespace MokomoGamesLib.Runtime.Ads.Banners
 {
-    public class ShowBannerProcess
+    public class Process
     {
-        private AdsBanner _adsBanner;
+        private Banner _banner;
         private AdsConfigList _adsConfigList;
 
         public void Start(AdsConfigList adsConfigList)
         {
             _adsConfigList = adsConfigList;
-            _adsBanner = CreateBanner();
+            _banner = CreateBanner();
             // note: ロードが完了した時点でバナーが表示されるため、明示的に表示命令を出す必要がない。
-            _adsBanner.Load();
+            _banner.Load();
         }
 
-        private AdsBanner CreateBanner()
+        private Banner CreateBanner()
         {
             var bannerView = new BannerView(
                 _adsConfigList.GetCurrentPlatformUnitId(AdsType.Banner),
-                AdSize.SmartBanner,
-                AdPosition.Bottom);
-            return new AdsBanner(bannerView);
+                AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth),
+                AdPosition.Bottom
+            );
+            return new Banner(bannerView);
         }
     }
 }

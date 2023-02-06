@@ -1,20 +1,18 @@
 ﻿using System;
 using GoogleMobileAds.Api;
 
-namespace MokomoGamesLib.Runtime.Ads.Banner
+namespace MokomoGamesLib.Runtime.Ads.Banners
 {
-    public class AdsBanner : IAds
+    public class Banner
     {
         private readonly BannerView _bannerView;
 
-        public AdsBanner(BannerView bannerView)
+        public Banner(BannerView bannerView)
         {
             _bannerView = bannerView;
-            _bannerView.OnAdClosed += (sender, args) => { OnAdClosed?.Invoke(args); };
-            _bannerView.OnAdLoaded += (sender, args) => { OnAdLoaded?.Invoke(args); };
+            _bannerView.OnAdFullScreenContentClosed += () => OnAdClosed?.Invoke();
+            _bannerView.OnBannerAdLoaded += () => OnAdLoaded?.Invoke();
         }
-
-        public AdsType AdsType => AdsType.Banner;
 
         public void Show()
         {
@@ -31,7 +29,7 @@ namespace MokomoGamesLib.Runtime.Ads.Banner
             _bannerView.Destroy();
         }
 
-        public event Action<EventArgs> OnAdLoaded;
-        public event Action<EventArgs> OnAdClosed;
+        public event Action OnAdLoaded;
+        public event Action OnAdClosed;
     }
 }
