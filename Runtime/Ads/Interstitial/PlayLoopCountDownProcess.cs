@@ -27,8 +27,19 @@ namespace MokomoGamesLib.Runtime.Ads.Interstitial
 
         private void BuildInterstitialAd(AdsConfigList adsConfigList)
         {
-            _ads = new AdsInterstitial(new InterstitialAd(adsConfigList.GetCurrentPlatformUnitId(AdsType.Interstitial)));
-            _ads!.OnAdClosed += args => { BuildInterstitialAd(_adsConfigList); };
+            InterstitialAd.Load(
+                _adsConfigList.GetCurrentPlatformUnitId(AdsType.Interstitial),
+                AdsManager.CreateAdMobRequest().Build(),
+                (ad, error) =>
+                {
+                    _ads = new AdsInterstitial(ad);
+                    _ads.OnAdClosed += () =>
+                    {
+                        _ads.Destroy();
+                        BuildInterstitialAd(_adsConfigList);
+                    };
+                }
+            );
 
             _counter = new Counter.Counter(0, Random.Range(_adsIntervalMin, _adsIntervalMax));
             _counter.OnEnd += () => { _ads.Show(); };

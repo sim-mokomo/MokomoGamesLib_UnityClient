@@ -3,35 +3,25 @@ using GoogleMobileAds.Api;
 
 namespace MokomoGamesLib.Runtime.Ads
 {
-    public class AdsReward : IAds
+    public class AdsReward
     {
-        private readonly RewardedAd ads;
+        private readonly RewardedAd _ads;
 
         public AdsReward(RewardedAd ads)
         {
-            this.ads = ads;
-            ads.OnAdClosed += (sender, args) => { OnAdClosed?.Invoke(args); };
-            ads.OnAdLoaded += (sender, args) => { OnAdLoaded?.Invoke(args); };
+            _ads = ads;
+            ads.OnAdFullScreenContentClosed += () => OnAdClosed?.Invoke();
         }
-
-        public AdsType AdsType => AdsType.Reward;
 
         public void Show()
         {
-            ads.Show();
+            _ads.Show(reward =>
+            {
+                OnEarnedReward?.Invoke();
+            });
         }
-
-        public void Load()
-        {
-            ads.LoadAd(AdsManager.CreateAdMobRequest().Build());
-        }
-
-        public void Destroy()
-        {
-            // NOTE: 明示的に破壊できない
-        }
-
-        public event Action<EventArgs> OnAdLoaded;
-        public event Action<EventArgs> OnAdClosed;
+        
+        public event Action OnAdClosed;
+        public event Action OnEarnedReward;
     }
 }

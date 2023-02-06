@@ -20,8 +20,9 @@ namespace MokomoGamesLib.Runtime.Ads.Banner
         {
             var bannerView = new BannerView(
                 _adsConfigList.GetCurrentPlatformUnitId(AdsType.Banner),
-                AdSize.SmartBanner,
-                AdPosition.Bottom);
+                AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(AdSize.FullWidth),
+                AdPosition.Bottom
+            );
             return new AdsBanner(bannerView);
         }
     }
