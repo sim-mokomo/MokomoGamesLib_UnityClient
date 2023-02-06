@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Ads
+namespace MokomoGamesLib.Runtime.Ads.Configs
 {
     public class UnitIdRecord
     {

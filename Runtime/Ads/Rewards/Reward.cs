@@ -1,13 +1,13 @@
 ﻿using System;
 using GoogleMobileAds.Api;
 
-namespace MokomoGamesLib.Runtime.Ads
+namespace MokomoGamesLib.Runtime.Ads.Rewards
 {
-    public class AdsReward
+    public class Reward
     {
         private readonly RewardedAd _ads;
 
-        public AdsReward(RewardedAd ads)
+        public Reward(RewardedAd ads)
         {
             _ads = ads;
             ads.OnAdFullScreenContentClosed += () => OnAdClosed?.Invoke();

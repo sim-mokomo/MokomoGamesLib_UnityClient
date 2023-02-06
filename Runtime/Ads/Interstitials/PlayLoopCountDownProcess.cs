@@ -1,13 +1,14 @@
 using GoogleMobileAds.Api;
+using MokomoGamesLib.Runtime.Ads.Configs;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Ads.Interstitial
+namespace MokomoGamesLib.Runtime.Ads.Interstitials
 {
     public class PlayLoopCountDownProcess
     {
         private readonly int _adsIntervalMax;
         private readonly int _adsIntervalMin;
-        private AdsInterstitial _ads;
+        private Interstitial _ads;
         private Counter.Counter _counter;
         private readonly AdsConfigList _adsConfigList;
 
@@ -32,7 +33,7 @@ namespace MokomoGamesLib.Runtime.Ads.Interstitial
                 AdsManager.CreateAdMobRequest().Build(),
                 (ad, error) =>
                 {
-                    _ads = new AdsInterstitial(ad);
+                    _ads = new Interstitial(ad);
                     _ads.OnAdClosed += () =>
                     {
                         _ads.Destroy();

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using GoogleMobileAds.Api;
-using MokomoGamesLib.Runtime.Ads.AppOpen;
-using MokomoGamesLib.Runtime.Ads.Banner;
+using MokomoGamesLib.Runtime.Ads.Configs;
 using UnityEngine;
+using Process = MokomoGamesLib.Runtime.Ads.Banners.Process;
 
 namespace MokomoGamesLib.Runtime.Ads
 {
     public class AdsManager : MonoBehaviour
     {
-        private readonly List<ShowAppOpenAdProcess> _showAppOpenAdProcessesList = new();
-        private readonly List<ShowBannerProcess> _showBannerProcesses = new();
+        private readonly List<AppOpens.Process> _showAppOpenAdProcessesList = new();
+        private readonly List<Process> _showBannerProcesses = new();
         private AdsConfigList _adsConfigList = new AdsConfigList();
 
         public void Init(Action<InitializationStatus> initCompleteAction)
@@ -29,16 +29,16 @@ namespace MokomoGamesLib.Runtime.Ads
             _adsConfigList.Add(adsConfig);
         }
 
-        public ShowAppOpenAdProcess CreateAppOpenAdProcess()
+        public AppOpens.Process CreateAppOpenAdProcess()
         {
-            var process = new ShowAppOpenAdProcess();
+            var process = new AppOpens.Process();
             _showAppOpenAdProcessesList.Add(process);
             return process;
         }
 
-        public ShowBannerProcess CreateShowBannerProcess()
+        public Process CreateShowBannerProcess()
         {
-            var process = new ShowBannerProcess();
+            var process = new Process();
             _showBannerProcesses.Add(process);
             return process;
         }

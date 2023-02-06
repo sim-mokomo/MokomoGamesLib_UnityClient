@@ -1,13 +1,13 @@
 ﻿using System;
 using GoogleMobileAds.Api;
 
-namespace MokomoGamesLib.Runtime.Ads.Interstitial
+namespace MokomoGamesLib.Runtime.Ads.Interstitials
 {
-    public class AdsInterstitial
+    public class Interstitial
     {
         private readonly InterstitialAd _interstitialAd;
 
-        public AdsInterstitial(InterstitialAd interstitialAd)
+        public Interstitial(InterstitialAd interstitialAd)
         {
             _interstitialAd = interstitialAd;
             _interstitialAd.OnAdFullScreenContentClosed += () => OnAdClosed?.Invoke();

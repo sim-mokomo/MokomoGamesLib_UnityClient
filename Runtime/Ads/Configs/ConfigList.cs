@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Ads
+namespace MokomoGamesLib.Runtime.Ads.Configs
 {
     public class AdsConfigList
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using GoogleMobileAds.Api;
 
-namespace MokomoGamesLib.Runtime.Ads
+namespace MokomoGamesLib.Runtime.Ads.Banners
 {
-    public class AdsBanner
+    public class Banner
     {
         private readonly BannerView _bannerView;
 
-        public AdsBanner(BannerView bannerView)
+        public Banner(BannerView bannerView)
         {
             _bannerView = bannerView;
             _bannerView.OnAdFullScreenContentClosed += () => OnAdClosed?.Invoke();

@@ -1,13 +1,14 @@
 ﻿using GoogleMobileAds.Api;
+using MokomoGamesLib.Runtime.Ads.Configs;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Ads.AppOpen
+namespace MokomoGamesLib.Runtime.Ads.AppOpens
 {
-    public class AppOpenAdManager
+    public class AppOpen
     {
-        private AppOpenAd ad;
-        private bool isShowingAd;
-        public bool IsAdAvailable => ad != null;
+        private AppOpenAd _ad;
+        private bool _isShowingAd;
+        public bool IsAdAvailable => _ad != null;
         private AdsConfigList _adsConfigList;
 
         public void LoadAd(AdsConfigList adsConfigList)
@@ -27,43 +28,43 @@ namespace MokomoGamesLib.Runtime.Ads.AppOpen
                     }
 
                     // App open ad is loaded.
-                    ad = appOpenAd;
+                    _ad = appOpenAd;
                 }
             );
         }
 
         public void ShowAdIfAvailable()
         {
-            if (!IsAdAvailable || isShowingAd) return;
+            if (!IsAdAvailable || _isShowingAd) return;
 
-            ad.OnAdDidDismissFullScreenContent += (sender, args) =>
+            _ad.OnAdDidDismissFullScreenContent += (sender, args) =>
             {
                 Debug.Log("Closed app open ad");
                 // Set the ad to null to indicate that AppOpenAdManager no longer has another ad to show.
-                ad = null;
-                isShowingAd = false;
+                _ad = null;
+                _isShowingAd = false;
                 LoadAd(_adsConfigList);
             };
-            ad.OnAdFailedToPresentFullScreenContent += (sender, args) =>
+            _ad.OnAdFailedToPresentFullScreenContent += (sender, args) =>
             {
                 Debug.LogFormat("Failed to present the ad (reason: {0})", args.AdError.GetMessage());
                 // Set the ad to null to indicate that AppOpenAdManager no longer has another ad to show.
-                ad = null;
+                _ad = null;
                 LoadAd(_adsConfigList);
             };
-            ad.OnAdDidPresentFullScreenContent += (sender, args) =>
+            _ad.OnAdDidPresentFullScreenContent += (sender, args) =>
             {
                 Debug.Log("Displayed app open ad");
-                isShowingAd = true;
+                _isShowingAd = true;
             };
-            ad.OnAdDidRecordImpression += (sender, args) => { Debug.Log("Recorded ad impression"); };
-            ad.OnPaidEvent += (sender, args) =>
+            _ad.OnAdDidRecordImpression += (sender, args) => { Debug.Log("Recorded ad impression"); };
+            _ad.OnPaidEvent += (sender, args) =>
             {
                 Debug.LogFormat("Received paid event. (currency: {0}, value: {1}",
                     args.AdValue.CurrencyCode,
                     args.AdValue.Value);
             };
-            ad.Show();
+            _ad.Show();
         }
     }
 }
