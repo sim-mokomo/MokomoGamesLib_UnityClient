@@ -1,8 +1,8 @@
-﻿using UnityEditor;
-#if UNITY_IOS || UNITY_EDITOR_OSX
+﻿#if UNITY_IOS || UNITY_EDITOR_OSX
 #define IS_IOS_PLATFORM
 #endif
 
+using UnityEditor;
 #if IS_IOS_PLATFORM
 using System;
 using System.IO;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MokomoGamesLib.Runtime.Debugger;
+using MokomoGamesLib.Runtime.Debugs;
 using UnityEngine;
 
 namespace MokomoGamesLib.Runtime.Localization

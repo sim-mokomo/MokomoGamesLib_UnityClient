@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Debugger
+namespace MokomoGamesLib.Runtime.Debugs
 {
     public static class GameDebugRepository
     {

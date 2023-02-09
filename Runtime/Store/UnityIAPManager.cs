@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using Protobuf;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.Purchasing.Security;
 
 namespace MokomoGamesLib.Runtime.Store
 {

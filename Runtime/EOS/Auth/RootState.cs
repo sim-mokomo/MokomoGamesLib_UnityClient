@@ -2,7 +2,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Epic.OnlineServices;
-using MokomoGamesLib.Runtime.Debugger;
+using MokomoGamesLib.Runtime.Debugs;
 using MokomoGamesLib.Runtime.Loading;
 using MokomoGamesLib.Runtime.StateMachine;
 using MokomoGamesLib.Runtime.UI;
