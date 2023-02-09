@@ -1,6 +1,6 @@
 using System;
 
-namespace MokomoGamesLib.Runtime.Counter
+namespace MokomoGamesLib.Runtime.Counters
 {
     public class Counter
     {

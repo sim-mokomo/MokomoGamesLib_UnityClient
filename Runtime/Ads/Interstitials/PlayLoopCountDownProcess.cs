@@ -1,5 +1,6 @@
 using GoogleMobileAds.Api;
 using MokomoGamesLib.Runtime.Ads.Configs;
+using MokomoGamesLib.Runtime.Counters;
 using UnityEngine;
 
 namespace MokomoGamesLib.Runtime.Ads.Interstitials
@@ -9,7 +10,7 @@ namespace MokomoGamesLib.Runtime.Ads.Interstitials
         private readonly int _adsIntervalMax;
         private readonly int _adsIntervalMin;
         private Interstitial _ads;
-        private Counter.Counter _counter;
+        private Counter _counter;
         private readonly AdsConfigList _adsConfigList;
 
         public PlayLoopCountDownProcess(int adsIntervalMin, int adsIntervalMax, AdsConfigList adsConfigList)
@@ -42,7 +43,7 @@ namespace MokomoGamesLib.Runtime.Ads.Interstitials
                 }
             );
 
-            _counter = new Counter.Counter(0, Random.Range(_adsIntervalMin, _adsIntervalMax));
+            _counter = new Counter(0, Random.Range(_adsIntervalMin, _adsIntervalMax));
             _counter.OnEnd += () => { _ads.Show(); };
         }
     }
