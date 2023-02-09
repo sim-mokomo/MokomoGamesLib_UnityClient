@@ -2,7 +2,7 @@ using System;
 using MokomoGamesLib.Runtime.Localization;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Debugs
+namespace MokomoGamesLib.Runtime.Debugs.GameDebug
 {
     [Serializable]
     public class GameDebugSaveData : ScriptableObject

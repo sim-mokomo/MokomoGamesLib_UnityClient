@@ -1,4 +1,5 @@
 using MokomoGamesLib.Runtime.Debugs;
+using MokomoGamesLib.Runtime.Debugs.GameDebug;
 using MokomoGamesLib.Runtime.Localization;
 using UnityEditor;
 using UnityEngine;
