@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.GameObjectExtensions
+namespace MokomoGamesLib.Runtime.Extensions
 {
     public static class GameObjectExtensions
     {
