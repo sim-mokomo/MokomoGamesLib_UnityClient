@@ -1,8 +1,8 @@
-﻿namespace MokomoGamesLib.Runtime.Licence
+﻿namespace MokomoGamesLib.Runtime.Licences
 {
-    public class LicenceEntity
+    public class Licence
     {
-        public LicenceEntity(string title, string content)
+        public Licence(string title, string content)
         {
             Title = title;
             Content = content;

@@ -1,12 +1,9 @@
 ﻿using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Licence.MasterData
+namespace MokomoGamesLib.Runtime.Licences.MasterData
 {
-    [CreateAssetMenu(
-        fileName = "LicenceItem",
-        menuName = "Licence/CreateItem",
-        order = 1)]
-    public class LicenceListItemSO : ScriptableObject
+    [CreateAssetMenu(fileName = "LicenceMasterDataRecord", menuName = "Licence/CreateRecord")]
+    public class Record : ScriptableObject
     {
         [SerializeField] private string title;
         [SerializeField] private TextAsset licenceText;
