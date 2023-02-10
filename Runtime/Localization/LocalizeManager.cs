@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using MokomoGamesLib.Runtime.Debugs;
 using MokomoGamesLib.Runtime.Debugs.GameDebug;
 using UnityEngine;
 
@@ -28,7 +27,7 @@ namespace MokomoGamesLib.Runtime.Localization
         private void Awake()
         {
 #if UNITY_EDITOR
-            _gameDebugSaveData = GameDebugRepository.LoadIfNotExistCreate();
+            _gameDebugSaveData = Debugs.GameDebug.Service.LoadIfNotExistCreate();
             _gameDebugSaveData.OnChangedGameLanguage += async language =>
             {
                 if (!isEndedLoading()) return;
