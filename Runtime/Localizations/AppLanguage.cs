@@ -2,6 +2,11 @@
 {
     public enum AppLanguage
     {
-        
+        Arabic,
+        Japanese,
+        English,
+        Korean,
+        ChineseSimplified,
+        ChineseTraditional
     }
 }

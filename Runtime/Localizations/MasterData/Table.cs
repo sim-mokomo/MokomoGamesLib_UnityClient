@@ -22,19 +22,5 @@ namespace MokomoGamesLib.Runtime.Localizations.MasterData
             Debug.LogError($"{Record.Language.ToString()} には {key} は登録されていません");
             return string.Empty;
         }
-
-        public static AppLanguage ConvertSystemLanguage2AppLanguage(SystemLanguage systemLanguage)
-        {
-            return systemLanguage switch
-            {
-                SystemLanguage.Arabic => AppLanguage.Arabic,
-                SystemLanguage.Korean => AppLanguage.Korean,
-                SystemLanguage.ChineseSimplified => AppLanguage.ChineseSimplified,
-                SystemLanguage.ChineseTraditional => AppLanguage.ChineseTraditional,
-                SystemLanguage.Japanese => AppLanguage.Japanese,
-                SystemLanguage.English => AppLanguage.English,
-                _ => AppLanguage.English
-            };
-        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MokomoGamesLib.Runtime.Debugs.GameDebug;
+using MokomoGamesLib.Runtime.Extensions;
 using MokomoGamesLib.Runtime.Localizations.MasterData;
 using UnityEngine;
 
@@ -37,7 +38,7 @@ namespace MokomoGamesLib.Runtime.Localizations
 
         public async Task<Table> LoadAsync(SystemLanguage language)
         {
-            return await LoadAsync(Table.ConvertSystemLanguage2AppLanguage(language));
+            return await LoadAsync(language.ConvertToAppLanguage());
         }
 
         public async Task<Table> LoadAsync(AppLanguage language)
