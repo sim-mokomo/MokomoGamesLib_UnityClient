@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.GameConfig
+namespace MokomoGamesLib.Runtime.GameConfigs
 {
-    public class GameConfigPlayerPrefsRepository
+    public class PlayerPrefsRepository
     {
         private const string IsMuteKey = "isMute";
 

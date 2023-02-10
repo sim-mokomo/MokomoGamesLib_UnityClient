@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MokomoGamesLib.Runtime.GameConfig;
+using MokomoGamesLib.Runtime.GameConfigs;
 using MokomoGamesLib.Runtime.Localization;
 using MokomoGamesLib.Runtime.Network;
 using MokomoGamesLib.Runtime.StateMachine;

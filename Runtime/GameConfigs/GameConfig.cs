@@ -1,4 +1,4 @@
-﻿namespace MokomoGamesLib.Runtime.GameConfig
+﻿namespace MokomoGamesLib.Runtime.GameConfigs
 {
     public class GameConfig
     {

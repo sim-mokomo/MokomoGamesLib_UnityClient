@@ -1,15 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.GameConfig
+namespace MokomoGamesLib.Runtime.GameConfigs
 {
     public class GameConfigManager : MonoBehaviour
     {
-        private readonly GameConfigPlayerPrefsRepository _gameConfigRepository;
+        private readonly PlayerPrefsRepository _gameConfigRepository;
 
         public GameConfigManager()
         {
-            _gameConfigRepository = new GameConfigPlayerPrefsRepository();
+            _gameConfigRepository = new PlayerPrefsRepository();
         }
 
         public GameConfig Config { get; private set; }
