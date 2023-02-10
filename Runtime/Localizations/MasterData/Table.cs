@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Localization
+namespace MokomoGamesLib.Runtime.Localizations.MasterData
 {
-    public class LocalizeEntity
+    public class Table
     {
-        private readonly Dictionary<string, string> _localizeTable;
+        private readonly Dictionary<string, string> _messageKVS;
 
-        public LocalizeEntity(LocalizeConfig config, Dictionary<string, string> localizeTable)
+        public Table(Record record, Dictionary<string, string> messageKVS)
         {
-            _localizeTable = localizeTable;
-            Config = config;
+            _messageKVS = messageKVS;
+            Record = record;
         }
 
-        public LocalizeConfig Config { get; }
+        public Record Record { get; }
 
-        public string GetLocalizedString(string key)
+        public string GetMessage(string key)
         {
-            if (_localizeTable.TryGetValue(key, out var message)) return message;
+            if (_messageKVS.TryGetValue(key, out var message)) return message;
 
-            Debug.LogError($"{Config.Language.ToString()} には {key} は登録されていません");
+            Debug.LogError($"{Record.Language.ToString()} には {key} は登録されていません");
             return string.Empty;
         }
 

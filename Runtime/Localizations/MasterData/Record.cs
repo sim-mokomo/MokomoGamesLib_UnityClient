@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Localization
+namespace MokomoGamesLib.Runtime.Localizations.MasterData
 {
     [CreateAssetMenu(menuName = "Localize/Config", fileName = "LocalizeConfig")]
-    public class LocalizeConfig : ScriptableObject
+    public class Record : ScriptableObject
     {
         [Header("翻訳先言語")] [SerializeField] private AppLanguage language;
 

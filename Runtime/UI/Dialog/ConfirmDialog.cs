@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using MokomoGamesLib.Runtime.Localization;
+using MokomoGamesLib.Runtime.Localizations;
 using MokomoGamesLib.Runtime.UI.Animation;
 using MokomoGamesLib.Runtime.Utilities;
 using UnityEngine;

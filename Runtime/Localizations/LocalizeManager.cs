@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MokomoGamesLib.Runtime.Debugs.GameDebug;
+using MokomoGamesLib.Runtime.Localizations.MasterData;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Localization
+namespace MokomoGamesLib.Runtime.Localizations
 {
-    public enum AppLanguage
-    {
-        Arabic,
-        Japanese,
-        English,
-        Korean,
-        ChineseSimplified,
-        ChineseTraditional
-    }
-
     public class LocalizeManager : MonoBehaviour
     {
         [SerializeField] private LocalizeRepository localizeRepository;
@@ -22,7 +13,7 @@ namespace MokomoGamesLib.Runtime.Localization
 #if UNITY_EDITOR
         private GameDebugSaveData _gameDebugSaveData;
 #endif
-        public LocalizeEntity LocalizeEntity { get; private set; }
+        public Table Table { get; private set; }
 
         private void Awake()
         {
@@ -32,7 +23,7 @@ namespace MokomoGamesLib.Runtime.Localization
             {
                 if (!isEndedLoading()) return;
 
-                LocalizeEntity = await LoadAsync(language);
+                Table = await LoadAsync(language);
             };
 #endif
         }
@@ -41,25 +32,25 @@ namespace MokomoGamesLib.Runtime.Localization
 
         public bool isEndedLoading()
         {
-            return LocalizeEntity != null;
+            return Table != null;
         }
 
-        public async Task<LocalizeEntity> LoadAsync(SystemLanguage language)
+        public async Task<Table> LoadAsync(SystemLanguage language)
         {
-            return await LoadAsync(LocalizeEntity.ConvertSystemLanguage2AppLanguage(language));
+            return await LoadAsync(Table.ConvertSystemLanguage2AppLanguage(language));
         }
 
-        public async Task<LocalizeEntity> LoadAsync(AppLanguage language)
+        public async Task<Table> LoadAsync(AppLanguage language)
         {
             var localizedEntity = await localizeRepository.LoadAsync(language);
-            LocalizeEntity = localizedEntity;
+            Table = localizedEntity;
             OnChangedLanguage?.Invoke();
             return localizedEntity;
         }
 
         public string GetLocalizedString(string textKey)
         {
-            return LocalizeEntity == null ? string.Empty : LocalizeEntity.GetLocalizedString(textKey);
+            return Table == null ? string.Empty : Table.GetMessage(textKey);
         }
     }
 }
