@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Loading
+namespace MokomoGamesLib.Runtime.Loadings.UI
 {
     public class WheelLoadingPresenter : MonoBehaviour
     {

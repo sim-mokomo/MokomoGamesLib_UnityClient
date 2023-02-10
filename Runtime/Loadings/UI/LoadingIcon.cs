@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Loading
+namespace MokomoGamesLib.Runtime.Loadings.UI
 {
     public class LoadingIcon : MonoBehaviour
     {
@@ -16,11 +16,11 @@ namespace MokomoGamesLib.Runtime.Loading
         public void Tick(float dt)
         {
             _currentRotateTimer += dt;
-            if (_currentRotateTimer > rotateInterval)
-            {
-                _currentRotateTimer = 0f;
-                pivot.Rotate(Vector3.forward, -45f);
-            }
+            if (_currentRotateTimer <= rotateInterval) return;
+
+            const float anglePerCircle = -45f;
+            _currentRotateTimer = 0f;
+            pivot.Rotate(Vector3.forward, anglePerCircle);
         }
     }
 }

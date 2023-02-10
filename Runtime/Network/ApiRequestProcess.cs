@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Google.Protobuf;
-using MokomoGamesLib.Runtime.Loading;
+using MokomoGamesLib.Runtime.Loadings;
+using MokomoGamesLib.Runtime.Loadings.UI;
 using MokomoGamesLib.Runtime.UI;
 using UnityEngine;
 
