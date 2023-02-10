@@ -4,7 +4,9 @@ using Cysharp.Threading.Tasks;
 using MokomoGamesLib.Runtime.Extensions;
 using MokomoGamesLib.Runtime.GameConfigs;
 using MokomoGamesLib.Runtime.Localizations;
+using MokomoGamesLib.Runtime.Login.PlayFab;
 using MokomoGamesLib.Runtime.Network;
+using MokomoGamesLib.Runtime.Network.PlayFab;
 using MokomoGamesLib.Runtime.StateMachine;
 using MokomoGamesLib.Runtime.User;
 using UnityEngine;
@@ -26,7 +28,7 @@ namespace MokomoGamesLib.Runtime.Login.SubState
             await new LoginService().CustomLoginAsync("LoginUser");
 #else
             // TODO: APIからPlayFabTitleIdを受け取る
-            await new LoginService("").LoginAsync();
+            await new Service("").LoginAsync();
 #endif
 
 #if UNITY_EDITOR && DEV

@@ -8,11 +8,11 @@ using UnityEngine;
 using UnityEngine;
 #endif
 
-namespace MokomoGamesLib.Runtime.Network
+namespace MokomoGamesLib.Runtime.Login.PlayFab
 {
-    public class LoginService
+    public class Service
     {
-        public LoginService(string titleId)
+        public Service(string titleId)
         {
             PlayFabSettings.staticSettings.TitleId = titleId;
         }

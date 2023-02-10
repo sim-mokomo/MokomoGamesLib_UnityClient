@@ -5,9 +5,9 @@ using PlayFab;
 using PlayFab.CloudScriptModels;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Network
+namespace MokomoGamesLib.Runtime.Network.PlayFab
 {
-    public class PlayFabApiCommunicator
+    public class ApiCommunicator
     {
         public UniTask<TResponse> Communicate<TRequest, TResponse>(string apiName, TRequest request)
             where TRequest : IMessage<TRequest>

@@ -13,7 +13,7 @@ namespace MokomoGamesLib.Runtime.Entry
             // adsManager.Init(_ => { });
             // await adsManager.CreateAppOpenAdProcess().Start();
             // adsManager.CreateShowBannerProcess().Start();
-            _apiRequestProcess = FindObjectOfType<ApiRequestProcess>();
+            _apiRequestProcess = new ApiRequestProcess();
         }
 
         protected virtual void Update()
