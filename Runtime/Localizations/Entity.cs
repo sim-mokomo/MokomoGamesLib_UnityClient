@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
+using MokomoGamesLib.Runtime.Localizations.MasterData;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Localizations.MasterData
+namespace MokomoGamesLib.Runtime.Localizations
 {
-    public class Table
+    public class Entity
     {
         private readonly Dictionary<string, string> _messageKVS;
 
-        public Table(Record record, Dictionary<string, string> messageKVS)
+        public Entity(Record record, Dictionary<string, string> messageKVS)
         {
             _messageKVS = messageKVS;
             Record = record;

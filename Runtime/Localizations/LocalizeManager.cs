@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MokomoGamesLib.Runtime.Debugs.GameDebug;
-using MokomoGamesLib.Runtime.Extensions;
-using MokomoGamesLib.Runtime.Localizations.MasterData;
 using UnityEngine;
 
 namespace MokomoGamesLib.Runtime.Localizations
@@ -11,47 +9,36 @@ namespace MokomoGamesLib.Runtime.Localizations
     {
         [SerializeField] private LocalizeRepository localizeRepository;
 
+        public Entity CurrentEntity { get; private set; }
+
 #if UNITY_EDITOR
         private GameDebugSaveData _gameDebugSaveData;
-#endif
-        public Table Table { get; private set; }
-
         private void Awake()
         {
-#if UNITY_EDITOR
             _gameDebugSaveData = Debugs.GameDebug.Service.LoadIfNotExistCreate();
             _gameDebugSaveData.OnChangedGameLanguage += async language =>
             {
-                if (!isEndedLoading()) return;
+                if (!IsEndedLoading()) return;
 
-                Table = await LoadAsync(language);
+                CurrentEntity = await LoadAsync(language);
             };
-#endif
         }
+#endif
 
         public event Action OnChangedLanguage;
 
-        public bool isEndedLoading()
+        public bool IsEndedLoading()
         {
-            return Table != null;
+            return CurrentEntity != null;
         }
 
-        public async Task<Table> LoadAsync(SystemLanguage language)
+        public async Task<Entity> LoadAsync(AppLanguage language)
         {
-            return await LoadAsync(language.ConvertToAppLanguage());
-        }
-
-        public async Task<Table> LoadAsync(AppLanguage language)
-        {
-            var localizedEntity = await localizeRepository.LoadAsync(language);
-            Table = localizedEntity;
+            CurrentEntity = await localizeRepository.LoadAsync(language);
             OnChangedLanguage?.Invoke();
-            return localizedEntity;
+            return CurrentEntity;
         }
 
-        public string GetLocalizedString(string textKey)
-        {
-            return Table == null ? string.Empty : Table.GetMessage(textKey);
-        }
+        public string GetLocalizedString(string textKey) => CurrentEntity == null ? string.Empty : CurrentEntity.GetMessage(textKey);
     }
 }

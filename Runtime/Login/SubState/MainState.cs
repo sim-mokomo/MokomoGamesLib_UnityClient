@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using MokomoGamesLib.Runtime.Extensions;
 using MokomoGamesLib.Runtime.GameConfigs;
 using MokomoGamesLib.Runtime.Localizations;
 using MokomoGamesLib.Runtime.Network;
@@ -36,7 +37,7 @@ namespace MokomoGamesLib.Runtime.Login.SubState
 #else
             await Object
                 .FindObjectOfType<LocalizeManager>()
-                .LoadAsync(Application.systemLanguage);
+                .LoadAsync(Application.systemLanguage.ConvertToAppLanguage());
 #endif
 
             var inventoryManager = Object.FindObjectOfType<InventoryManager>();

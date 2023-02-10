@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Localizations
+namespace MokomoGamesLib.Runtime.Localizations.UI
 {
     public class LocalizeText : MonoBehaviour
     {
@@ -32,7 +32,7 @@ namespace MokomoGamesLib.Runtime.Localizations
         public void SetTextFromKey(string key)
         {
             textKey = key;
-            if (!_localizeManager.isEndedLoading()) return;
+            if (!_localizeManager.IsEndedLoading()) return;
 
             text.text = string.IsNullOrEmpty(key) ? "" : _localizeManager.GetLocalizedString(textKey);
             UpdateSelfFont();
@@ -41,14 +41,14 @@ namespace MokomoGamesLib.Runtime.Localizations
         public void SetTextDirectly(string content)
         {
             textKey = string.Empty;
-            if (!_localizeManager.isEndedLoading()) return;
+            if (!_localizeManager.IsEndedLoading()) return;
             text.text = content;
             UpdateSelfFont();
         }
 
         private void UpdateSelfFont()
         {
-            text.font = Resources.Load<TMP_FontAsset>(_localizeManager.Table.Record.GetFontPath(isBitMapFont));
+            text.font = Resources.Load<TMP_FontAsset>(_localizeManager.CurrentEntity.Record.GetFontPath(isBitMapFont));
             text.UpdateFontAsset();
         }
     }
