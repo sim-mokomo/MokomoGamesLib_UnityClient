@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MokomoGamesLib.Runtime.Touch
 {
-    public class TouchInputProvider
+    public class InputProvider
     {
         public enum TouchType
         {
@@ -16,7 +16,7 @@ namespace MokomoGamesLib.Runtime.Touch
             Canceld = 4
         }
 
-        public TouchInputProvider()
+        public InputProvider()
         {
             OnTouched += type =>
             {
