@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using MokomoGamesLib.Runtime.Extensions;
 using MokomoGamesLib.Runtime.Network;
 using MokomoGamesLib.Runtime.User;
 using PlayFab;
@@ -10,9 +11,9 @@ using Protobuf;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
-namespace MokomoGamesLib.Runtime.Store
+namespace MokomoGamesLib.Runtime.Store.PlayFab
 {
-    public static class PlayFabStoreRepository
+    public static class StoreRepository
     {
         public static UniTask<List<ProductDefinition>> RequestCatalog()
         {

@@ -6,9 +6,8 @@ using Cysharp.Threading.Tasks;
 using Protobuf;
 using UnityEngine;
 using UnityEngine.Purchasing;
-using UnityEngine.Purchasing.Security;
 
-namespace MokomoGamesLib.Runtime.Store
+namespace MokomoGamesLib.Runtime.Store.Unity
 {
     public class UnityIAPManager : IStoreListener
     {
@@ -21,6 +20,9 @@ namespace MokomoGamesLib.Runtime.Store
 
         private AsyncReactiveProperty<InitializationFailureReason> _onInitializedStoreFailed;
         private IStoreController _storeController;
+        private bool IsInitialized => _storeController != null && _extensionProvider != null;
+        public event Action OnRestored;
+        public event Action OnInitializedEvent;
 
         public UnityIAPManager(Func<UniTask<List<ProductDefinition>>> requestCatalog, CancellationToken cancellationToken)
         {
@@ -59,6 +61,7 @@ namespace MokomoGamesLib.Runtime.Store
         public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
         {
             _onInitializedStore.Value = (controller, extensions);
+            OnInitializedEvent?.Invoke();
         }
 
         public void OnInitializeFailed(InitializationFailureReason error)
@@ -196,9 +199,15 @@ namespace MokomoGamesLib.Runtime.Store
 
         public void Restore()
         {
+            if (!IsInitialized)
+            {
+                return;
+            }
+            
             void RestoreTransactionEvent(bool success)
             {
                 Debug.Log(success ? "リストアトランザクション成功" : "リストアトランザクション失敗");
+                OnRestored?.Invoke();
             }
 #if UNITY_IOS || UNITY_EDITOR_OSX
             _extensionProvider.GetExtension<IAppleExtensions>().RestoreTransactions(RestoreTransactionEvent);
@@ -209,6 +218,10 @@ namespace MokomoGamesLib.Runtime.Store
 
         public void Purchase(string productId)
         {
+            if (!IsInitialized)
+            {
+                return;
+            }
             _storeController.InitiatePurchase(productId);
         }
 
