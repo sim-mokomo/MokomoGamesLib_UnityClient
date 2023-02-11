@@ -1,5 +1,5 @@
-using MokomoGamesLib.Runtime.Debugger;
-using MokomoGamesLib.Runtime.Localization;
+using MokomoGamesLib.Runtime.Debugs.GameDebug;
+using MokomoGamesLib.Runtime.Localizations;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace MokomoGamesLib.Editor
 
         private void OnGUI()
         {
-            if (GUILayout.Button("読み込み")) _saveData = GameDebugRepository.LoadIfNotExistCreate();
+            if (GUILayout.Button("読み込み")) _saveData = Service.LoadIfNotExistCreate();
 
             if (_saveData)
             {

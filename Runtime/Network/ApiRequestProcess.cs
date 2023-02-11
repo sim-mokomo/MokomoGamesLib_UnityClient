@@ -1,12 +1,13 @@
 using Cysharp.Threading.Tasks;
 using Google.Protobuf;
-using MokomoGamesLib.Runtime.Loading;
+using MokomoGamesLib.Runtime.Loadings;
+using MokomoGamesLib.Runtime.Loadings.UI;
 using MokomoGamesLib.Runtime.UI;
 using UnityEngine;
 
 namespace MokomoGamesLib.Runtime.Network
 {
-    public class ApiRequestProcess : MonoBehaviour
+    public class ApiRequestProcess
     {
         private WheelLoadingPresenter _loadingPresenter;
 
@@ -15,7 +16,7 @@ namespace MokomoGamesLib.Runtime.Network
             where TRequest : IMessage<TRequest>
             where TResponse : IMessage<TResponse>, new()
         {
-            var uiManager = FindObjectOfType<UIManager>();
+            var uiManager = Object.FindObjectOfType<UIManager>();
             var apiRequestRunner = new ApiRequestRunner();
             _loadingPresenter = uiManager.Create<WheelLoadingPresenter>(UIManager.CanvasOrder.Front);
             _loadingPresenter.Show(true);

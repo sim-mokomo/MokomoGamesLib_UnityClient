@@ -27,11 +27,11 @@ namespace MokomoGamesLib.Runtime.Network
             { ApiName.RegisterTemplates, "RegisterTemplates" }
         };
 
-        private readonly PlayFabApiCommunicator _communicator;
+        private readonly PlayFab.ApiCommunicator _communicator;
 
         public ApiRequestRunner()
         {
-            _communicator = new PlayFabApiCommunicator();
+            _communicator = new PlayFab.ApiCommunicator();
         }
 
         public async UniTask<TResponse> Request<TRequest, TResponse>

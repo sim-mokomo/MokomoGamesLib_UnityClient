@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MokomoGamesLib.Runtime.Loading;
+using MokomoGamesLib.Runtime.Loadings;
+using MokomoGamesLib.Runtime.Loadings.UI;
 using MokomoGamesLib.Runtime.Login.SubState;
 using MokomoGamesLib.Runtime.StateMachine;
 using MokomoGamesLib.Runtime.UI;

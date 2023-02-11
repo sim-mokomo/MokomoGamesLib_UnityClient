@@ -1,4 +1,4 @@
-﻿using MokomoGamesLib.Runtime.Store;
+﻿using MokomoGamesLib.Runtime.Extensions;
 using UnityEngine.Purchasing;
 
 namespace MokomoGamesLib.Runtime.User

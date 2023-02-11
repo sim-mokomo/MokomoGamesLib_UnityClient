@@ -2,8 +2,8 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Epic.OnlineServices;
-using MokomoGamesLib.Runtime.Debugger;
-using MokomoGamesLib.Runtime.Loading;
+using MokomoGamesLib.Runtime.Loadings;
+using MokomoGamesLib.Runtime.Loadings.UI;
 using MokomoGamesLib.Runtime.StateMachine;
 using MokomoGamesLib.Runtime.UI;
 using PlayEveryWare.EpicOnlineServices;
@@ -35,7 +35,7 @@ namespace MokomoGamesLib.Runtime.EOS.Auth
             var loginType = LoginService.LoginType.None;
 #if UNITY_EDITOR
             // note: エピックアカウント別の開発者向けIDとTokenを設定する
-            var debugSaveData = GameDebugRepository.LoadIfNotExistCreate();
+            var debugSaveData = Debugs.GameDebug.Service.LoadIfNotExistCreate();
             id = debugSaveData.CurrentEpicLoginInfo.Id;
             token = debugSaveData.CurrentEpicLoginInfo.UserName;
             loginType = LoginService.LoginType.Local;
