@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MokomoGamesLib.Runtime.Utilities
+namespace MokomoGamesLib.Runtime.Extensions
 {
     public static class QuaternionExtensions
     {

@@ -14,7 +14,7 @@ namespace MokomoGamesLib.Runtime.Utilities
         public static string GetProjectName()
         {
             var paths = Application.dataPath.Split('/');
-            return paths[paths.Length - 3];
+            return paths[^3];
         }
 
         public static string GetGameServerBuildsDirPath()

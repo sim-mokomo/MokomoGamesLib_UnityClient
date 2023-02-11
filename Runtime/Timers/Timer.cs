@@ -1,6 +1,6 @@
 using System;
 
-namespace MokomoGamesLib.Runtime.Utilities
+namespace MokomoGamesLib.Runtime.Timers
 {
     // 秒数ベースにカウントダウンするタイマー
     public class Timer
