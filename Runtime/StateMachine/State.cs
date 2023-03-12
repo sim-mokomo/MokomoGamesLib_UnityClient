@@ -30,7 +30,7 @@ namespace MokomoGamesLib.Runtime.StateMachine
             IsInitialized = true;
         }
 
-        public virtual async UniTask Tick(float deltaTime, CancellationToken ct)
+        public virtual async void Tick(float deltaTime)
         {
         }
 

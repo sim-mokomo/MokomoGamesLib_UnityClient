@@ -31,7 +31,7 @@ namespace MokomoGamesLib.Runtime.Ads.Interstitials
         {
             InterstitialAd.Load(
                 _adsConfigList.GetCurrentPlatformUnitId(AdsType.Interstitial),
-                AdsManager.CreateAdMobRequest().Build(),
+                AdsManager.CreateAdMobRequest(),
                 (ad, error) =>
                 {
                     _ads = new Interstitial(ad);

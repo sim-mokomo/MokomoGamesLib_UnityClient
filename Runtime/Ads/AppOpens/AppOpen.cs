@@ -17,7 +17,7 @@ namespace MokomoGamesLib.Runtime.Ads.AppOpens
             AppOpenAd.Load(
                 adsConfigList.GetCurrentPlatformUnitId(AdsType.AppOpen),
                 ScreenOrientation.AutoRotation,
-                AdsManager.CreateAdMobRequest().Build(),
+                AdsManager.CreateAdMobRequest(),
                 (ad, error) =>
                 {
                     if (error != null)

@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 using Protobuf;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.Purchasing.Security;
 
 namespace MokomoGamesLib.Runtime.Store.Unity
 {
@@ -124,21 +125,21 @@ namespace MokomoGamesLib.Runtime.Store.Unity
 
             var receipt = Receipt.Parser.ParseJson(purchaseEventArgs.purchasedProduct.receipt);
 #if UNITY_ANDROID
-            PlayFabStoreRepository.ValidateGooglePlayReceipt(
-                purchaseEventArgs,
-                receipt,
-                result =>
-                {
-                    _storeController.ConfirmPendingPurchase(purchaseEventArgs.purchasedProduct);
-                    OnPurchased?.Invoke();
-                    Debug.Log("Android購入確定");
-                },
-                error =>
-                {
-                    _storeController.ConfirmPendingPurchase(purchaseEventArgs.purchasedProduct);
-                    Debug.Log($"Android購入確定失敗 {error.GenerateErrorReport()}");
-                }
-            );
+            // PlayFabStoreRepository.ValidateGooglePlayReceipt(
+            //     purchaseEventArgs,
+            //     receipt,
+            //     result =>
+            //     {
+            //         _storeController.ConfirmPendingPurchase(purchaseEventArgs.purchasedProduct);
+            //         OnPurchased?.Invoke();
+            //         Debug.Log("Android購入確定");
+            //     },
+            //     error =>
+            //     {
+            //         _storeController.ConfirmPendingPurchase(purchaseEventArgs.purchasedProduct);
+            //         Debug.Log($"Android購入確定失敗 {error.GenerateErrorReport()}");
+            //     }
+            // );
 #elif UNITY_IOS || UNITY_EDITOR_OSX
             PlayFabStoreRepository.ValidateAppStoreReceipt(
                 purchaseEventArgs,

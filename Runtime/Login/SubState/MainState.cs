@@ -28,7 +28,7 @@ namespace MokomoGamesLib.Runtime.Login.SubState
             await new LoginService().CustomLoginAsync("LoginUser");
 #else
             // TODO: APIからPlayFabTitleIdを受け取る
-            await new Service("").LoginAsync();
+            await new Service("7FDF5").LoginAsync();
 #endif
 
 #if UNITY_EDITOR && DEV

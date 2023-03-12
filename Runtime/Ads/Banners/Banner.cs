@@ -21,7 +21,7 @@ namespace MokomoGamesLib.Runtime.Ads.Banners
 
         public void Load()
         {
-            _bannerView.LoadAd(AdsManager.CreateAdMobRequest().Build());
+            _bannerView.LoadAd(AdsManager.CreateAdMobRequest());
         }
 
         public void Destroy()

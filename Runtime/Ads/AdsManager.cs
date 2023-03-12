@@ -18,10 +18,9 @@ namespace MokomoGamesLib.Runtime.Ads
             MobileAds.Initialize(initCompleteAction);
         }
         
-        public static AdRequest.Builder CreateAdMobRequest()
+        public static AdRequest CreateAdMobRequest()
         {
-            var request = new AdRequest.Builder();
-            return request;
+            return new AdRequest.Builder().Build();
         }
 
         public void AddAdsConfig(AdsConfig adsConfig)

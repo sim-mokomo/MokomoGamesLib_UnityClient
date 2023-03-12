@@ -27,13 +27,13 @@ namespace MokomoGamesLib.Runtime.StateMachine
             foreach (var state in _stateMap) state.OnApplicationQuit();
         }
 
-        public async UniTask Tick(float deltaTime, CancellationToken ct)
+        public async void Tick(float deltaTime)
         {
             if (CurrentState == null) return;
 
             if (!CurrentState.IsInitialized) return;
 
-            await CurrentState.Tick(deltaTime, ct);
+            CurrentState.Tick(deltaTime);
         }
 
         public UniTask BackToLatestState()

@@ -65,10 +65,10 @@ namespace MokomoGamesLib.Runtime.Login
             _stateMachine.ChangeStateAsync(typeof(MainState), new MainState.Request(), ct).Forget();
         }
 
-        public override async UniTask Tick(float deltaTime, CancellationToken ct)
+        public override void Tick(float deltaTime)
         {
-            base.Tick(deltaTime, ct).Forget();
-            _stateMachine.Tick(deltaTime, ct).Forget();
+            base.Tick(deltaTime);
+            _stateMachine.Tick(deltaTime);
 
             if (_wheelLoadingPresenter != null) _wheelLoadingPresenter.Tick(deltaTime);
         }

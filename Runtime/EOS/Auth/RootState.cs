@@ -52,9 +52,9 @@ namespace MokomoGamesLib.Runtime.EOS.Auth
             });
         }
 
-        public override async UniTask Tick(float deltaTime, CancellationToken ct)
+        public override async void Tick(float deltaTime)
         {
-            base.Tick(deltaTime, ct).Forget();
+            base.Tick(deltaTime);
 
             EOSManager.Instance.Tick();
             _wheelLoadingPresenter.Tick(deltaTime);
